@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Coda:wght@400;800&family=Open+Sans:wght@300;400;500;600;700;800&family=PT+Sans+Caption:wght@400;700&display=swap');
+
+$headings: 'PT Sans Caption', sans-serif;
+$bodyFont: 'Open Sans' sans-serif;
+$fontSize: 16px;
+$transition: 0.3 ease-in-out;
+$lightgray: #f6f6f6;
+$white: #fff;
+$black: #000;
+$primary: cornflowerblue;
+$gray: #6c757d;
+$text: #4a4a4a;
+$borders: #eeeeee;
+
+//mixin
+
+@mixin btn() {
+  background: $primary;
+  padding: 15px 40px;
+  font: 1rem sans-serif;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  color: $white;
+  transition: $transition;
+  margin-top: 20px;
+  &:hover {
+    background: #000;
+  }
+}
+
+@mixin line() {
+  display: block;
+  content: '';
+  width: 40px;
+  background: $primary;
+  height: 3px;
+}
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+//basics
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: $bodyFont;
+  font-size: $fontSize;
+  color: $text;
+  line-height: 1.6;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headings;
+  color: $black;
+}
+h2 {
+  font: 2rem sans-serif;
+  margin-bottom: 20px;
+  &::before {
+    @include line();
+    margin-bottom: 10px;
+  }
+}
+img {
+  width: 100%;
+}
+hr {
+  border: none;
+  background: $gray;
+  height: 1px;
+  margin: 10px 0 20px 0;
+}
+a {
+  text-decoration: none;
+  color: $primary;
+  transition: $transition;
+}
+ul {
+  list-style: none;
+}
+.py {
+  padding: 100px 0;
+}
+.container {
+  width: 72%;
+  margin: auto;
+  padding: 100px;
+}
+.item {
+  display: block;
+  border: 5px solid $borders;
+  padding: 30px;
+  border-radius: 5px;
+  transition: $transition;
+  &:hover {
+    border: 5px solid $primary;
+  }
+  p {
+    color: $primary;
+    font: 1rem sans-serif;
+    padding-top: 10px;
+    &:last-child {
+      color: cornflowerblue;
+    }
+  }
+}
+//TOPBAR
+
+.topbar {
+  text-align: center;
+  border-top: 5px solid $primary;
+  border-bottom: 1px solid $lightgray;
+  padding: 20px 0;
+  a {
+    font-size: 3rem;
+    text-shadow: 0 0 0 2px;
+    font-family: 'Coda', cursive;
+    font-weight: 800;
+    letter-spacing: 6px;
+    i {
+      color: $text;
+      font-size: 3rem;
+      margin-right: 10px;
+    }
+    &:hover {
+      color: $text;
+    }
+  }
+}
+
+//NAVBAR
+
+nav {
+  text-align: center;
+  padding: 15px 0;
+  ul {
+    @include flex(space-evenly, center, row);
+    li {
+      flex: 0 0 10%;
+      a {
+        font: 1.4rem sans-serif;
+        color: $black;
+        text-transform: uppercase;
+      }
+      a:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+//SUBSCTIBE
+
+.subscribe {
+  text-align: center;
+  background-color: $primary;
+  color: $white;
+  h3 {
+    font: 600 2rem sans-serif;
+  }
+  p {
+    margin: 20px;
+  }
+  input {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  input[type='text'] {
+    border: 1px solid $white;
+    color: $white;
+  }
+  input[type='submit'] {
+    border: 1px solid $white;
+    color: $black;
+    background: $white;
+    transition: $transition;
+    &:hover {
+      background: $black;
+      color: $white;
+      border: 1px solid $black;
+      transition: $transition;
+    }
+  }
+}
+footer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  h3 {
+    font: 2.5rem sans-serif;
+  }
+  p {
+    font: 1.2rem sans-serif;
+  }
+  ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    li {
+      margin-left: 50px;
+      a {
+        padding: 1px;
+      }
+      a:hover {
+        color: $primary;
+      }
+    }
+  }
+  .icons {
+    font-size: 2rem;
+    border-bottom: 1px solid $lightgray;
+    padding-bottom: 5px;
+    i {
+      margin-left: 30px;
+      color: $text;
+    }
+    i:hover {
+      color: $primary;
+    }
+  }
+  .cpy {
+    padding-top: 20px;
+    font: 500 1rem sans-serif;
+  }
+}
+
+//HEADER
+header {
+  background: url(img/header.jpg);
+  background-position: center top;
+  background-size: cover;
+  div {
+    width: 40%;
+    padding: 40px;
+    background: rgba($white, 0.6);
+    h1 {
+      &::after {
+        @include line();
+        margin: 20px 0;
+      }
+    }
+    button {
+      @include btn();
+    }
+  }
+}
+
+//products
+.products {
+  article {
+    @include flex(space-evenly, center, row);
+    .item {
+      @extend .item;
+      flex: 0 0 24%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+//about
+
+.about {
+  article {
+    @include flex(space-between, flex-end, row);
+    div {
+      &:first-child {
+        flex: 0 0 38%;
+      }
+      &:last-child {
+        flex: 0 0 58%;
+        p {
+          margin-bottom: 20px;
+          font: 1rem sans-serif;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}
+
+//contact
+
+.contact {
+  article {
+    display: flex;
+    justify-content: space-between;
+    iframe {
+      flex: 0 0 48%;
+    }
+    form {
+      flex: 0 0 48%;
+      input,
+      textarea {
+        width: 100%;
+        margin: 10px;
+        padding: 15px;
+      }
+      button {
+        @include btn();
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+//single
+.single {
+  article {
+    @include flex(space-between, flex-start, row);
+    img {
+      flex: 0 0 38%;
+      border: 1px solid $primary;
+      border-radius: 5px;
+    }
+    div {
+      flex: 0 0 58%;
+      h3 {
+        font-size: 1.7rem;
+      }
+      .price + p {
+        font-weight: 300;
+        padding: 15px 0;
+      }
+      select {
+        padding: 15px;
+        margin: 0 15px;
+      }
+      button {
+        @include btn();
+      }
+    }
+  }
+}
